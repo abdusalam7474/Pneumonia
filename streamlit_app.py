@@ -20,11 +20,18 @@ def main():
     # Overview tab content
     with tab1:
         st.title("Pneumonia Image Prediction App")
-        st.write("This app helps identify pneumonia in chest X-ray images.")
+        st.write("This app helps identify pneumonia in chest X-ray images. Open the main tab, upload a "jpg" or "png" image and click "predict")
 
         # Overview section
         st.header("What is Pneumonia?")
-        st.write("Pneumonia is an infection that inflames the air sacs in one or both lungs.")
+        st.write("Pneumonia is an infection that inflames the air sacs in one or both lungs. These air sacs, called alveoli, fill with fluid or pus (a thick, yellowish-white liquid), making it difficult to breathe.")
+        st.write("Symptoms:")
+        st.write("Shortness of breath that worsens with activity or even at rest")
+        st.write("")
+        st.write("")
+        st.write("")
+        st.write("")
+        
         st.image("pneumo-true.jpeg", caption="X-ray image of an unhealthy lung")
         st.image("pneumo-false.jpeg", caption="X-ray image of a healthy lung")
 
