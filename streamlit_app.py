@@ -34,9 +34,9 @@ def main():
         st.image("pneumo-false.jpeg", caption="X-ray image of a healthy lung")
 
     # Prediction tab content
-    st.write("Upload an Image to test for pneumonia and click.")
-    st.write("Accepted file formats: jpg, png")
     with tab2:
+        st.write("Upload an Image to test for pneumonia and click.")
+        st.write("Accepted file formats: jpg, png" )
         uploaded_file = st.file_uploader("Upload Chest X-ray Image", type=["jpg", "png"])
         if uploaded_file is not None:
             image = load_image(uploaded_file)
