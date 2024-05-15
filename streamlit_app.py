@@ -27,11 +27,9 @@ def main():
         st.write("Pneumonia is an infection that inflames the air sacs in one or both lungs. These air sacs, called alveoli, fill with fluid or pus (a thick, yellowish-white liquid), making it difficult to breathe.")
         st.write("Symptoms:")
         st.write("Shortness of breath that worsens with activity or even at rest")
-        st.write("")
-        st.write("")
-        st.write("")
-        st.write("")
-        
+        st.write("Diagnosis:")
+        st.write("Medical history and physical exam, Chest X-ray, Sputum test, Pulse oximetry")
+        st.write("")    
         st.image("pneumo-true.jpeg", caption="X-ray image of an unhealthy lung")
         st.image("pneumo-false.jpeg", caption="X-ray image of a healthy lung")
 
