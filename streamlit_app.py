@@ -20,7 +20,7 @@ def main():
     # Overview tab content
     with tab1:
         st.title("Pneumonia Image Prediction App")
-        st.write("This app helps identify pneumonia in chest X-ray images. Open the main tab, upload a "jpg" or "png" image and click "predict")
+        st.write("This app helps identify pneumonia in chest X-ray images. Open the main tab, upload a "jpg" or "png" image and click "predict" ")
 
         # Overview section
         st.header("What is Pneumonia?")
