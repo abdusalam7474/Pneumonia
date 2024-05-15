@@ -25,7 +25,7 @@ def main():
         # Overview section
         st.header("What is Pneumonia?")
         st.write("Pneumonia is an infection that inflames the air sacs in one or both lungs.")
-        st.image("pneumo-true.jpg", caption="Uploaded Image")
+        st.image("pneumo-true.jpeg", caption="Uploaded Image")
 
     # Prediction tab content
     with tab2:
