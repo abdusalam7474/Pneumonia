@@ -1,5 +1,5 @@
 import streamlit as st
-import cv2
+#import cv2
 # Import your pre-trained model and libraries
 
 # Function to load and preprocess image
