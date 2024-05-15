@@ -5,10 +5,12 @@ import cv2
 # Function to load and preprocess image
 def load_image(image_file):
     # Load image and apply preprocessing steps
+    return 0
 
 # Function to predict pneumonia using the model
 def predict_pneumonia(image):
     # Use your model to predict pneumonia and get probability
+    return 0
 
 # Main app
 def main():
