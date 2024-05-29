@@ -81,14 +81,14 @@ def main():
             if st.button("Predict Pneumonia"):
                 predictions, probs = predict_pneumonia(image)
                 st.subheader("Prediction Results:")
-                st.image(image, caption="Original Image")
+                #st.image(image, caption="Original Image")
 
-                # Display segmented image (optional, depends on your model)
+                # Display segmented image (optional, depends on our model)
                 if "segmented_image" in predictions:
                     st.image(predictions["segmented_image"], caption="Segmented Image")
 
                 # Display predicted category and probability
-                st.write(f"Predicted Category: {predictions['category']}")
+                st.write(f"Predicted Category: {predictions}")
                 st.write(f"Probability: {probs:.2f}")
 
 if __name__ == "__main__":
