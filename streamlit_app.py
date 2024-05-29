@@ -31,7 +31,7 @@ def load_image(image_file):
 # Function to predict pneumonia using the model
 def predict_pneumonia(image):
     # We use our model to predict pneumonia and get probability
-    test_image = np.asarray([image])
+    test_image = np.asarray(image)
     test_image = np.expand_dims(test_image, axis = 0)
     prediction = loaded_model.predict(test_image)
     if(prediction[0] > 0.5):
