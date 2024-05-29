@@ -1,16 +1,51 @@
 import streamlit as st
+import numpy as np
+import pandas as pd
+import tensorflow as tf
+import shutil
+import tensorflow_hub as hub
+import tensorflow_text as text
+import os
+import requests 
+from io import BytesIO
+import spacy
+
 #import cv2
 # Import your pre-trained model and libraries
+
+# download model from Dropbox, cache it and load the model into the app 
+@st.cache(allow_output_mutation=True)
+def download_model(url):
+  """Downloads a zipped model file from the specified URL using requests."""
+  model_response = requests.get(url)
+  model_response.raise_for_status()  # Raise error for failed downloads
+  return model_response.content, model_response
+
 
 # Function to load and preprocess image
 def load_image(image_file):
     # Load image and apply preprocessing steps
-    return 0
+    img = cv2.resize(cv2.imread(image_file), (224,224))
+    return img
 
 # Function to predict pneumonia using the model
 def predict_pneumonia(image):
-    # Use your model to predict pneumonia and get probability
-    return 0
+    # We use our model to predict pneumonia and get probability
+    test_image = np.asarray([image])
+    test_image = np.expand_dims(test_image, axis = 0)
+    prediction = loaded_model.predict(test_image)
+    if(prediction[0] > 0.5):
+        statistic = prediction[0] * 100 
+        #print("This image is %.3f percent %s"% (statistic, "P N E U M O N I A"))
+        return "P N E U M O N I A" , statistic
+    else:
+        statistic = (1.0 - prediction[0]) * 100
+        #print("This image is %.3f percent %s" % (statistic, "N O R M A L"))
+        return "N O R M A L" , statistic
+
+model_url = "https://www.dropbox.com/scl/fi/zxmmulmsidprp08c50vjv/Dbert2.zip?rlkey=mq48q8nnkvrxcexdjgqq1eyie&st=e52l7zo5&dl=1"
+model_bytes, content = download_model(model_url)
+loaded_model = tensorflow.keras.models.load_model(model_bytes)
 
 # Main app
 def main():
