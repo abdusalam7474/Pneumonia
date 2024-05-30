@@ -30,11 +30,11 @@ def check_model(content):
     if content_type:
       file_extension = content_type.split('/')[-1]
     else:
-      file_extension = ""
-    print(file_extension)
+      file_extension = "none available"
+    st.write(file_extension)
     return True, file_extension
   except requests.exceptions.RequestException as e:
-    print(f"Download failed: {e}")
+    st.write(f"Download failed: {e}")
     return False, ""
     
 # Function to load and preprocess image
