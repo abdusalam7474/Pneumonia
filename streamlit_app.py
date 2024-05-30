@@ -3,12 +3,7 @@ import numpy as np
 import pandas as pd
 import tensorflow as tf
 import shutil
-import tensorflow_hub as hub
-import tensorflow_text as text
-import os
-import requests 
-from io import BytesIO
-import spacy
+import keras
 
 #import cv2
 # Import your pre-trained model and libraries
