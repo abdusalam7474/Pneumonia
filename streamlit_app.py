@@ -4,6 +4,8 @@ import pandas as pd
 import tensorflow as tf
 import shutil
 import keras
+import requests 
+import io
 
 #import cv2
 # Import your pre-trained model and libraries
