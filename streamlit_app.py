@@ -42,7 +42,7 @@ def predict_pneumonia(image):
         #print("This image is %.3f percent %s" % (statistic, "N O R M A L"))
         return "N O R M A L" , statistic
 
-model_url = "https://www.dropbox.com/scl/fi/zxmmulmsidprp08c50vjv/Dbert2.zip?rlkey=mq48q8nnkvrxcexdjgqq1eyie&st=e52l7zo5&dl=1"
+model_url = "https://www.dropbox.com/scl/fi/9aazpmx6wnahturotqmk6/my_pneumonia_detection_model.h5?rlkey=lb51utq5dxgozq89hs0s202ne&st=xrslo3jf&dl=1"
 model_bytes, content = download_model(model_url)
 loaded_model = tensorflow.keras.models.load_model(model_bytes)
 
