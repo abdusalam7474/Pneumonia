@@ -6,8 +6,9 @@ import shutil
 import keras
 import requests 
 import io
+import cv2
 
-#import cv2
+
 # Import your pre-trained model and libraries
 
 # download model from Dropbox, cache it and load the model into the app 
