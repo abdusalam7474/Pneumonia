@@ -20,7 +20,23 @@ def download_model(url):
   model_response.raise_for_status()  # Raise error for failed downloads
   return io.BytesIO(model_response.content), model_response
 
+def check_model(content):
+  try:
+    model_response = content
+    #model_response.raise_for_status()  # Raise error for failed downloads
 
+    # Extract file extension (assuming content-type header is present)
+    content_type = model_response.headers.get('Content-Type')
+    if content_type:
+      file_extension = content_type.split('/')[-1]
+    else:
+      file_extension = ""
+    print(file_extension)
+    return True, file_extension
+  except requests.exceptions.RequestException as e:
+    print(f"Download failed: {e}")
+    return False, ""
+    
 # Function to load and preprocess image
 def load_image(image_file):
     # Load image and apply preprocessing steps
@@ -44,6 +60,7 @@ def predict_pneumonia(image):
 
 model_url = "https://www.dropbox.com/scl/fi/9aazpmx6wnahturotqmk6/my_pneumonia_detection_model.h5?rlkey=lb51utq5dxgozq89hs0s202ne&st=xrslo3jf&dl=1"
 model_bytes, content = download_model(model_url)
+check_model(content)
 loaded_model = tensorflow.keras.models.load_model(model_bytes)
 
 # Main app
