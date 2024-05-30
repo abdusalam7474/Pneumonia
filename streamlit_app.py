@@ -18,7 +18,7 @@ def download_model(url):
   """Downloads a zipped model file from the specified URL using requests."""
   model_response = requests.get(url)
   model_response.raise_for_status()  # Raise error for failed downloads
-  return model_response.content, model_response
+  return io.BytesIO(model_response.content) model_response
 
 
 # Function to load and preprocess image
