@@ -62,11 +62,14 @@ def predict_pneumonia(image):
         #print("This image is %.3f percent %s" % (statistic, "N O R M A L"))
         return "N O R M A L" , statistic
 
-model_url = "https://www.dropbox.com/scl/fi/9aazpmx6wnahturotqmk6/my_pneumonia_detection_model.h5?rlkey=lb51utq5dxgozq89hs0s202ne&st=xrslo3jf&dl=1"
-model_path, content = download_model(model_url)
+cnn_url = "https://www.dropbox.com/scl/fi/9aazpmx6wnahturotqmk6/my_pneumonia_detection_model.h5?rlkey=lb51utq5dxgozq89hs0s202ne&st=xrslo3jf&dl=1"
+resn_url = ""
+mobnet_url = ""
+cnn_path, content = download_model(cnn_url)
 check_model(content)
-loaded_model = tensorflow.keras.models.load_model(model_path)
+cnn_model = tensorflow.keras.models.load_model(cnn_path)
 
+sel_model = None
 
 # Main app
 def main():
@@ -92,9 +95,11 @@ def main():
       # Prediction tab content
     with tab2:
         st.write("Sellct Your choice of model")
-        st.selectbox("AI models", ["Custom CNN", "VG16", "MobileNet"])
-      
-    # Prediction tab content
+        model_sel = st.selectbox("AI models", ["Custom CNN", "VG16", "MobileNet"])
+        if model_sel = "Custom CNN":
+           sel_model = cnn_model
+    
+  # Prediction tab content
     with tab3:
         st.write("Upload an Image to test for pneumonia and click.")
         st.write("Accepted file formats: jpg, png" )
