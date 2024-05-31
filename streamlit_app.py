@@ -94,9 +94,9 @@ def main():
 
       # Prediction tab content
     with tab2:
-        st.write("Sellct Your choice of model")
+        st.write("Select Your choice of model")
         model_sel = st.selectbox("AI models", ["Custom CNN", "VG16", "MobileNet"])
-        if model_sel = "Custom CNN":
+        if model_sel == "Custom CNN":
            sel_model = cnn_model
     
   # Prediction tab content
