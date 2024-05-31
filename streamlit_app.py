@@ -18,7 +18,8 @@ def download_model(url):
   """Downloads a zipped model file from the specified URL using requests."""
   model_response = requests.get(url)
   model_response.raise_for_status()  # Raise error for failed downloads
-  return io.BytesIO(model_response.content), model_response
+  #return io.BytesIO(model_response.content), model_response
+  return model_response.content, model_response
 
 def check_model(content):
   try:
@@ -61,7 +62,8 @@ def predict_pneumonia(image):
 model_url = "https://www.dropbox.com/scl/fi/9aazpmx6wnahturotqmk6/my_pneumonia_detection_model.h5?rlkey=lb51utq5dxgozq89hs0s202ne&st=xrslo3jf&dl=1"
 model_bytes, content = download_model(model_url)
 check_model(content)
-loaded_model = tensorflow.keras.models.load_model(model_bytes)
+#loaded_model = tensorflow.keras.models.load_model(model_bytes)
+loaded_model = tf.saved_model.load(model_bytes)
 
 # Main app
 def main():
