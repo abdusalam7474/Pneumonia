@@ -21,11 +21,9 @@ def download_model(url):
   with tempfile.NamedTemporaryFile(delete=False) as temp_file:
     temp_file.write(model_data.getbuffer())
     #model = keras.models.load_model(temp_file.name)
-  return temp_file.name, model_response #model
   
-  #return io.BytesIO(model_response.content), model_response
-  #return model_response.content, model_response
-
+  return temp_file.name, model_response
+  
 def check_model(content):
   try:
     model_response = content
@@ -37,7 +35,7 @@ def check_model(content):
       file_extension = content_type.split('/')[-1]
     else:
       file_extension = "none available"
-    st.write(file_extension)
+    st.write("All models downloaded successfully")
     return True, file_extension
   except requests.exceptions.RequestException as e:
     st.write(f"Download failed: {e}")
@@ -65,15 +63,15 @@ def predict_pneumonia(image):
         return "N O R M A L" , statistic
 
 model_url = "https://www.dropbox.com/scl/fi/9aazpmx6wnahturotqmk6/my_pneumonia_detection_model.h5?rlkey=lb51utq5dxgozq89hs0s202ne&st=xrslo3jf&dl=1"
-model_bytes, content = download_model(model_url)
+model_path, content = download_model(model_url)
 check_model(content)
-loaded_model = tensorflow.keras.models.load_model(model_bytes)
-#loaded_model = tf.saved_model.load(model_bytes)
+loaded_model = tensorflow.keras.models.load_model(model_path)
+
 
 # Main app
 def main():
     # Create tabs
-    tab1, tab2 = st.tabs(["Overview", "Prediction"])
+    tab1, tab2, tab3 = st.tabs(["Overview", "Models", "Prediction"])
 
     # Overview tab content
     with tab1:
@@ -91,8 +89,13 @@ def main():
         st.image("pneumo-true.jpeg", caption="X-ray image of an unhealthy lung")
         st.image("pneumo-false.jpeg", caption="X-ray image of a healthy lung")
 
-    # Prediction tab content
+      # Prediction tab content
     with tab2:
+        st.write("Sellct Your choice of model")
+        st.selectbox("AI models", ["Custom CNN", "VG16", "MobileNet"])
+      
+    # Prediction tab content
+    with tab3:
         st.write("Upload an Image to test for pneumonia and click.")
         st.write("Accepted file formats: jpg, png" )
         uploaded_file = st.file_uploader("Upload Chest X-ray Image", type=["jpg", "png"])
