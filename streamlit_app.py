@@ -48,7 +48,7 @@ def load_image(image_file):
     # Load image and apply preprocessing steps
     #img = cv2.resize(np.asarray(image_file), (224,224))
     img = Image.open(image_file)
-    img = image.resize((224, 224))
+    img = img.resize((224, 224))
     return img
 
 # Function to predict pneumonia using the model
