@@ -44,7 +44,7 @@ def check_model(content):
 # Function to load and preprocess image
 def load_image(image_file):
     # Load image and apply preprocessing steps
-    img = cv2.resize(cv2.imread(image_file), (224,224))
+    img = cv2.resize(image_file, (224,224))
     return img
 
 # Function to predict pneumonia using the model
