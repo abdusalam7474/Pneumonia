@@ -52,11 +52,11 @@ def load_image(image_file):
     return img
 
 # Function to predict pneumonia using the model
-def predict_pneumonia(image):
+def predict_pneumonia(image, sel_model):
     # We use our model to predict pneumonia and get probability
     test_image = np.asarray(image)
     test_image = np.expand_dims(test_image, axis = 0)
-    prediction = loaded_model.predict(test_image)
+    prediction = sel_model.predict(test_image)
     if(prediction[0] > 0.5):
         statistic = prediction[0] * 100 
         #print("This image is %.3f percent %s"% (statistic, "P N E U M O N I A"))
@@ -72,7 +72,7 @@ mobnet_url = ""
 cnn_path, content = download_model(cnn_url)
 check_model(content)
 cnn_model = tensorflow.keras.models.load_model(cnn_path)
-
+vg_model = None
 sel_model = None
 
 # Main app
@@ -114,7 +114,7 @@ def main():
 
             # Prediction section
             if st.button("Predict Pneumonia"):
-                predictions, probs = predict_pneumonia(image)
+                predictions, probs = predict_pneumonia(image, sel_model)
                 st.subheader("Prediction Results:")
                 #st.image(image, caption="Original Image")
 
