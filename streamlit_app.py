@@ -21,7 +21,7 @@ def download_model(url):
   with tempfile.NamedTemporaryFile(delete=False) as temp_file:
     temp_file.write(model_data.getbuffer())
     #model = keras.models.load_model(temp_file.name)
-  return temp_file.name #model
+  return temp_file.name, model_response #model
   
   #return io.BytesIO(model_response.content), model_response
   #return model_response.content, model_response
