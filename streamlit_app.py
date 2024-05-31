@@ -9,6 +9,8 @@ import requests
 import io
 import cv2
 import tempfile
+from PIL import Image
+
 # Import your pre-trained model and libraries
 
 # download model from Dropbox, cache it and load the model into the app 
@@ -44,7 +46,9 @@ def check_model(content):
 # Function to load and preprocess image
 def load_image(image_file):
     # Load image and apply preprocessing steps
-    img = cv2.resize(np.asarray(image_file), (224,224))
+    #img = cv2.resize(np.asarray(image_file), (224,224))
+    img = Image.open(image_file)
+    img = image.resize((224, 224))
     return img
 
 # Function to predict pneumonia using the model
