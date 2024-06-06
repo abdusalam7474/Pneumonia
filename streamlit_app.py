@@ -67,13 +67,17 @@ def predict_pneumonia(image, sel_model):
         return "N O R M A L" , statistic
 
 cnn_url = "https://www.dropbox.com/scl/fi/9aazpmx6wnahturotqmk6/my_pneumonia_detection_model.h5?rlkey=lb51utq5dxgozq89hs0s202ne&st=xrslo3jf&dl=1"
-resn_url = ""
-mobnet_url = ""
+vg_url = "https://www.dropbox.com/scl/fi/7gpyh72rgic9ecu6jjbxe/my_pneumonia_detection_model_mn.h5?rlkey=aiw6my4qkr5k0iz8jjqlcyene&st=jwu2ajx7&dl=1"
+mobnet_url = "https://www.dropbox.com/scl/fi/8ehf3u74vcrrfydk5rktp/my_pneumonia_detection_model_cnn.h5?rlkey=lab5fq8unvo9oyg48tknil9y5&st=w3nonxxh&dl=1"
+
 cnn_path, content = download_model(cnn_url)
+vg_path, vg_content = download_model(cnn_url)
+mn_path, mn_content = download_model(cnn_url)
+
 check_model(content)
 cnn_model = tensorflow.keras.models.load_model(cnn_path)
-vg_model = None
-sel_model = None
+vg_model = tensorflow.keras.models.load_model(vg_path)
+mn_model = tensorflow.keras.models.load_model(mn_path)
 
 # Main app
 def main():
@@ -102,6 +106,10 @@ def main():
         model_sel = st.selectbox("AI models", ["Custom CNN", "VG16", "MobileNet"])
         if model_sel == "Custom CNN":
            sel_model = cnn_model
+        elif model_sel == "VG16":
+           sel_model = vg_model
+        elif model_sel == "MobileNet":
+           sel_model = mn_model
     
   # Prediction tab content
     with tab3:
