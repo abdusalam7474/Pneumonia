@@ -47,9 +47,10 @@ def check_model(content):
 def load_image(image_file):
     # Load image and apply preprocessing steps
     #img = cv2.resize(np.asarray(image_file), (224,224))
+    _ = Image.open(image_file)
     img = Image.open(image_file).convert('RGB')
     img = img.resize((224, 224))
-    return img
+    return img, _
 
 # Function to predict pneumonia using the model
 def predict_pneumonia(image, sel_model):
@@ -118,10 +119,10 @@ def main():
         st.write("Accepted file formats: jpg, png" )
         uploaded_file = st.file_uploader("Upload Chest X-ray Image", type=["jpg", "png"])
         if uploaded_file is not None:
-            image = load_image(uploaded_file)
-            test_image = np.asarray(image)
-            test_image = np.expand_dims(test_image, axis = 0)
-            st.write(f"shape of uploaded image: {test_image.shape}")
+            image, _ = load_image(uploaded_file)
+            o_image = np.asarray(_)
+            t_image = np.expand_dims(image, axis = 0)
+            st.write(f"shape of uploaded image: {o_image.shape}. it will be converted to: {t_image.shape} for analysis")
             st.image(image, caption="Uploaded Image")
 
             # Prediction section
