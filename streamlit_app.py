@@ -119,6 +119,9 @@ def main():
         uploaded_file = st.file_uploader("Upload Chest X-ray Image", type=["jpg", "png"])
         if uploaded_file is not None:
             image = load_image(uploaded_file)
+            test_image = np.asarray(image)
+            test_image = np.expand_dims(test_image, axis = 0)
+            st.write(f"shape of uploaded image: {test_image.shape}")
             st.image(image, caption="Uploaded Image")
 
             # Prediction section
