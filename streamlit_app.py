@@ -132,7 +132,7 @@ def main():
 
                 # Display predicted category and probability
                 st.write(f"Predicted Category: {predictions}")
-                st.write(f"Probability: {probs}%")
+                st.write(f"Probability: {probs}.3f %")
 
 if __name__ == "__main__":
     main()
