@@ -68,7 +68,7 @@ def predict_pneumonia(image, sel_model):
 
 cnn_url = "https://www.dropbox.com/scl/fi/9aazpmx6wnahturotqmk6/my_pneumonia_detection_model.h5?rlkey=lb51utq5dxgozq89hs0s202ne&st=xrslo3jf&dl=1"
 vg_url = "https://www.dropbox.com/scl/fi/7gpyh72rgic9ecu6jjbxe/my_pneumonia_detection_model_mn.h5?rlkey=aiw6my4qkr5k0iz8jjqlcyene&st=jwu2ajx7&dl=1"
-mobnet_url = "https://www.dropbox.com/scl/fi/8ehf3u74vcrrfydk5rktp/my_pneumonia_detection_model_cnn.h5?rlkey=lab5fq8unvo9oyg48tknil9y5&st=w3nonxxh&dl=1"
+mn_url = "https://www.dropbox.com/scl/fi/8ehf3u74vcrrfydk5rktp/my_pneumonia_detection_model_cnn.h5?rlkey=lab5fq8unvo9oyg48tknil9y5&st=w3nonxxh&dl=1"
 
 cnn_path, content = download_model(cnn_url)
 vg_path, vg_content = download_model(vg_url)
