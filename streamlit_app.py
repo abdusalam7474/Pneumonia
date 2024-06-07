@@ -87,6 +87,7 @@ def main():
     # Overview tab content
     with tab1:
         st.title("Pneumonia Image Prediction App")
+        st.image("MIT-Pneumonia-Sensor-01-press_0.jpg", caption="X-ray image of an unhealthy lung")
         st.write("This app helps identify pneumonia in chest X-ray images. Open the main tab, upload a 'jpg' or 'png' image and click 'predict' ")
 
         # Overview section
