@@ -47,7 +47,7 @@ def check_model(content):
 def load_image(image_file):
     # Load image and apply preprocessing steps
     #img = cv2.resize(np.asarray(image_file), (224,224))
-    img = Image.open(image_file)
+    img = Image.open(image_file).convert('RGB')
     img = img.resize((224, 224))
     return img
 
