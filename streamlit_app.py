@@ -60,19 +60,19 @@ def predict_pneumonia(image, sel_model):
     if(prediction[0] > 0.5):
         statistic = prediction[0] * 100 
         #print("This image is %.3f percent %s"% (statistic, "P N E U M O N I A"))
-        return "P N E U M O N I A" , prediction #statistic[0]
+        return "P N E U M O N I A" , statistic[0]
     else:
         statistic = (1.0 - prediction[0]) * 100
         #print("This image is %.3f percent %s" % (statistic, "N O R M A L"))
-        return "N O R M A L" , prediction #statistic[0]
+        return "N O R M A L" , statistic[0]
 
 cnn_url = "https://www.dropbox.com/scl/fi/9aazpmx6wnahturotqmk6/my_pneumonia_detection_model.h5?rlkey=lb51utq5dxgozq89hs0s202ne&st=xrslo3jf&dl=1"
 vg_url = "https://www.dropbox.com/scl/fi/7gpyh72rgic9ecu6jjbxe/my_pneumonia_detection_model_mn.h5?rlkey=aiw6my4qkr5k0iz8jjqlcyene&st=jwu2ajx7&dl=1"
 mobnet_url = "https://www.dropbox.com/scl/fi/8ehf3u74vcrrfydk5rktp/my_pneumonia_detection_model_cnn.h5?rlkey=lab5fq8unvo9oyg48tknil9y5&st=w3nonxxh&dl=1"
 
 cnn_path, content = download_model(cnn_url)
-vg_path, vg_content = download_model(cnn_url)
-mn_path, mn_content = download_model(cnn_url)
+vg_path, vg_content = download_model(vg_url)
+mn_path, mn_content = download_model(mn_url)
 
 check_model(content)
 cnn_model = tensorflow.keras.models.load_model(cnn_path)
@@ -132,7 +132,7 @@ def main():
 
                 # Display predicted category and probability
                 st.write(f"Predicted Category: {predictions}")
-                st.write(f"Probability: {probs}")
+                st.write(f"Probability: {probs}%")
 
 if __name__ == "__main__":
     main()
