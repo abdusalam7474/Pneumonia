@@ -11,6 +11,11 @@ import cv2
 import tempfile
 from PIL import Image
 
+import platform
+
+version = platform.python_version()
+st.write(version)
+
 # Import your pre-trained model and libraries
 
 # download model from Dropbox, cache it and load the model into the app 
