@@ -7,7 +7,7 @@ import shutil
 import keras
 import requests 
 import io
-import cv2
+#import cv2
 import tempfile
 from PIL import Image
 
