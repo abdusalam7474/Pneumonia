@@ -2,3 +2,4 @@ tensorflow==2.6.4
 keras==2.6.0
 opencv-python
 protobuf==3.20.1
+numpy==1.19.5
