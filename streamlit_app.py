@@ -110,7 +110,7 @@ def main():
       # Prediction tab content
     with tab2:
         st.write("Select Your choice of model")
-        model_sel = st.selectbox("AI models", ["Custom CNN", "VG16", "MobileNet"])
+        model_sel = st.selectbox("AI models", ["Custom CNN", "RESNET50V", "MobileNet"])
         if model_sel == "Custom CNN":
            sel_model = cnn_model
         elif model_sel == "RESNET50V":
