@@ -113,7 +113,7 @@ def main():
         model_sel = st.selectbox("AI models", ["Custom CNN", "VG16", "MobileNet"])
         if model_sel == "Custom CNN":
            sel_model = cnn_model
-        elif model_sel == "VG16":
+        elif model_sel == "RESNET50V":
            sel_model = vg_model
         elif model_sel == "MobileNet":
            sel_model = mn_model
